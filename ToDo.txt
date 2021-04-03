@@ -1,0 +1,22 @@
+Next steps:
+1) Creation and Edit functionality 
+2) Push what I have so far to github
+
+
+1) Context to flow data around
+2) Tab Navigation (Temporarily use a button to navigate to the correct screen)
+3) Getting Data into the App (Maybe use Yelp API as temporary placeholder)
+
+Don't Understand
+- Dispatch + Switch Statements 
+
+
+
+        <View style={styles.viewStyles}>
+                <EventComponent event={'Event 1'} />
+                <EventComponent event='Event 2' />
+                <EventComponent event='Event 3' />
+                <EventComponent event='Event 4' />
+                <EventComponent event='Event 5' />
+                <Button title='Temporary Button' onPress={() => navigation.navigate('CreateEvent')}/>
+        </View>
