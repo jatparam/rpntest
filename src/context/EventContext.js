@@ -44,6 +44,16 @@ const eventReducer = (state, action) => {
             ];
         case 'delete_event': 
             return state.filter((event) => event.id !== action.payload)
+        case 'edit_event': 
+            return state.map((event) => {
+                if (event.id === action.payload.id) {
+                    event.name = action.payload.name
+                    event.describe = action.payload.describe
+                    return event; 
+                } else {
+                    return event;
+                }
+            })
         default:
             console.log('went into default')
             return state;
@@ -63,8 +73,15 @@ const addEvent = (dispatch) => {
     };
  };
 
+ const editEvent = (dispatch) => {
+    return (id, name, describe, callback) => {
+        dispatch({ type: 'edit_event', payload: {id, name, describe} });
+        callback()
+    };
+ };
+
 export const { Context, Provider } = createDataContext(
     eventReducer, 
-    { addEvent, deleteEvent },
+    { addEvent, deleteEvent, editEvent },
     dummy
 );

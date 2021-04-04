@@ -5,7 +5,7 @@ import { Context as EventContext } from '../context/EventContext';
 const EventForm = ({ navigation, id }) => {
     return (
         <View>
-            
+            <Text> Eventually will extract logic from Edit and Create Screen into this component</Text>
         </View>
     )
 }

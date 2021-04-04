@@ -3,7 +3,7 @@ import { View, StyleSheet, Text, TextInput, Button} from 'react-native';
 import { Context as EventContext } from '../context/EventContext';
 
 const EditEventScreen = ({navigation}) => {
-    const { state, addEvent } = useContext(EventContext)
+    const { state, addEvent, editEvent } = useContext(EventContext)
     const event = state.find((event) => event.id === navigation.getParam('id'))
 
     const [eventName, setEventName] = useState(event.name);
@@ -32,7 +32,7 @@ const EditEventScreen = ({navigation}) => {
             <Text>Replace with Something to select Date</Text>
             <Button 
                 title="Submit Edits!" 
-                onPress={() => addEvent(eventName, eventDescribe, () => {
+                onPress={() => editEvent(event.id, eventName, eventDescribe, () => {
                     navigation.navigate('Home');
                 })}
             />
