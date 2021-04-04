@@ -1,3 +1,6 @@
+Debug:
+1) See if addEvent renders twice too (console.log)
+
 Next steps:
 1) Creation and Edit functionality 
 2) Push what I have so far to github

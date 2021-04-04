@@ -1,29 +1,28 @@
 import React, { useContext } from 'react';
-import { View, StyleSheet, ScrollView, Button, FlatList } from 'react-native';
+import { View, StyleSheet, Button, FlatList } from 'react-native';
 import EventComponent from '../components/EventComponent';
 import { Context as EventContext } from '../context/EventContext';
 
 const HomeScreen = ({navigation}) => {
-    const { state, addEvent } = useContext(EventContext)
+    const { state } = useContext(EventContext)
     
     return (
-        <ScrollView>
             <View style={styles.viewStyles}>
+                <Button title='Create New Event' onPress={() => navigation.navigate('CreateEvent')}/>
                 <FlatList 
                     data={state}
                     keyExtractor={(event) => event.id}
                     showsVerticalScrollIndicator={false}
                     renderItem={({item}) => {
-                        return (
-                                <EventComponent event={item.name} img={item.img} id={item.id} /> 
+                        return (  
+                                <EventComponent event={item.name} img={item.img} id={item.id} describe={item.describe} /> 
                             )
                     }}
                     nestedScrollEnabled={false}
                 />
             </View>
-            <Button title='Temporary Button' onPress={() => navigation.navigate('CreateEvent')}/>
-            <Button title='Add New Event' onPress={addEvent}/>
-        </ScrollView>
+            
+      
     )
 }
 

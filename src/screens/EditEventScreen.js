@@ -1,15 +1,18 @@
-import React, { useState, useContext } from 'react';
-import { View, Text, StyleSheet, TextInput, Button } from 'react-native';
+import React, { useContext, useState } from 'react';
+import { View, StyleSheet, Text, TextInput, Button} from 'react-native';
 import { Context as EventContext } from '../context/EventContext';
 
-const CreateEventScreen = ({ navigation }) => {
-    const [eventName, setEventName] = useState('');
-    const [eventDescribe, setEventDescribe] = useState('');
-    const { addEvent } = useContext(EventContext);
-    
+const EditEventScreen = ({navigation}) => {
+    const { state, addEvent } = useContext(EventContext)
+    const event = state.find((event) => event.id === navigation.getParam('id'))
+
+    const [eventName, setEventName] = useState(event.name);
+    const [eventDescribe, setEventDescribe] = useState(event.describe);
+
+
     return (
         <View>
-            <Text>Enter Name of Event</Text>
+            <Text>Edit Name of Event</Text>
             <TextInput 
             style={styles.textInput} 
             autoCapitalize='none'
@@ -17,7 +20,7 @@ const CreateEventScreen = ({ navigation }) => {
             autoCorrect={false}
             onChangeText={(newValue) => setEventName(newValue) }
             />
-            <Text>Enter Description of Event</Text>
+            <Text>Edit Description of Event</Text>
             <TextInput 
             style={styles.textInput} 
             autoCapitalize='none'
@@ -28,7 +31,7 @@ const CreateEventScreen = ({ navigation }) => {
             <Text>Replace with Something to invite friends</Text>
             <Text>Replace with Something to select Date</Text>
             <Button 
-                title="Create New Event!" 
+                title="Submit Edits!" 
                 onPress={() => addEvent(eventName, eventDescribe, () => {
                     navigation.navigate('Home');
                 })}
@@ -45,4 +48,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default CreateEventScreen
+export default EditEventScreen

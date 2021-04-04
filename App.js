@@ -4,13 +4,15 @@ import { createStackNavigator } from 'react-navigation-stack';
 import CreateEventScreen from './src/screens/CreateEventScreen';
 import HomeScreen from './src/screens/HomeScreen';
 import EventDetailsScreen from './src/screens/EventDetailsScreen';
+import EditEventScreen from './src/screens/EditEventScreen';
 import { Provider as EventProvider } from './src/context/EventContext';
 
 
 const navigator = createStackNavigator({
   Home: HomeScreen,
   CreateEvent: CreateEventScreen,
-  EventDetails: EventDetailsScreen
+  EventDetails: EventDetailsScreen,
+  EditEvent: EditEventScreen
 }, {
   initialRouteName: 'Home',
   defaultNavigationOptions: {

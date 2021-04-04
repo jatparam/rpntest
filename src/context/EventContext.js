@@ -8,21 +8,25 @@ const dummy = [{
     id: "1",
     name: 'Event 100',
     img: 'https://picsum.photos/300/200',
+    describe: 'Cool'
 },
 {
     id: "2",
     name: 'Event 2',
     img: 'https://picsum.photos/200/300',
+    describe: 'Wow'
 },
 {
     id: "3",
     name: 'Event 3',
     img: 'https://picsum.photos/500/500',
+    describe: 'Yay'
 },
 {
     id: "4",
     name: 'Event 4',
     img: 'https://picsum.photos/550/550',
+    describe: 'Awesome'
 },
 ]
 
@@ -33,8 +37,9 @@ const eventReducer = (state, action) => {
                 ...state, 
                 { 
                     id:`${Math.floor(Math.random() * 99999)}`, 
-                    name: `Event ${state.length + 1}`, 
-                    img: 'https://picsum.photos/500/500' 
+                    name: action.payload.name, 
+                    img: 'https://picsum.photos/500/500', 
+                    describe: action.payload.description
                 }
             ];
         case 'delete_event': 
@@ -46,14 +51,15 @@ const eventReducer = (state, action) => {
 };
 
 const addEvent = (dispatch) => {
-    return () => {
-        dispatch({ type: 'add_event'}) 
+    return (name, description, callback) => {
+        dispatch({ type: 'add_event', payload: {name, description} });
+        callback() 
     };
  };
 
  const deleteEvent = (dispatch) => {
     return (id) => {
-        dispatch({ type: 'delete_event', payload: id }) 
+        dispatch({ type: 'delete_event', payload: id });
     };
  };
 

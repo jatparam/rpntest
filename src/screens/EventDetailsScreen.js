@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Image, Button } from 'react-native';
 import { Context as EventContext } from '../context/EventContext';
 
 const EventDetailsScreen = ({ navigation }) => {
-    const { state, deleteEvent } = useContext(EventContext)
+    const { state } = useContext(EventContext)
     
     const event = state.find((event) => event.id === navigation.getParam('id'))
 
@@ -12,7 +12,7 @@ const EventDetailsScreen = ({ navigation }) => {
             <View>
                 <Image style={styles.imageStyle} source={{uri: event.img}}/> 
                 <Text>{event.name}</Text>
-                <Text>Description of the Event</Text>
+                <Text>{event.describe}</Text>
                 <Text>Icons of Friends going to the event</Text>
                 <Text>Buy Ticket with Price Amount</Text>
                 <Text>Location</Text>
@@ -22,7 +22,7 @@ const EventDetailsScreen = ({ navigation }) => {
                 <Text>About the Business</Text>
                 <Text>Previous Events by the Business</Text>
             </View>
-            <Button title='Delete Event' onPress={() => deleteEvent(event.id)} />
+            <Button title='Edit This Event' onPress={() => navigation.navigate('EditEvent', { id: event.id})}/>
         </View>
     )
 }
