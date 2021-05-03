@@ -8,7 +8,6 @@ const HomeScreen = ({navigation}) => {
     
     return (
             <View style={styles.viewStyles}>
-                <Button title='Create New Event' onPress={() => navigation.navigate('CreateEvent')}/>
                 <FlatList 
                     data={state}
                     keyExtractor={(event) => event.id}
