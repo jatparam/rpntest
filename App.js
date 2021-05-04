@@ -11,6 +11,7 @@ import BusinessDetailsScreen from './src/screens/BusinessDetailsScreen';
 import MyEventsScreen from './src/screens/MyEventsScreen';
 import SearchScreen from './src/screens/SearchScreen';
 import MyAccountScreen from './src/screens/MyAccountScreen';
+import { FontAwesome } from '@expo/vector-icons';
 
 
 const exploreFlow = createStackNavigator({
@@ -19,6 +20,11 @@ const exploreFlow = createStackNavigator({
   EditEvent: EditEventScreen,
   BusinessDetails: BusinessDetailsScreen
 })
+
+exploreFlow.navigationOptions = {
+  title: 'Home',
+  tabBarIcon: <FontAwesome name='home' size={20} />
+}
 
 const navigator = createBottomTabNavigator({
   exploreFlow: exploreFlow,

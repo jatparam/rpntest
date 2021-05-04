@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { View, Text, StyleSheet, Image, Button } from 'react-native';
+import { View, Text, StyleSheet, Image, Button, ScrollView } from 'react-native';
 import { Context as EventContext } from '../context/EventContext';
 
 const EventDetailsScreen = ({ navigation }) => {
@@ -8,22 +8,24 @@ const EventDetailsScreen = ({ navigation }) => {
     const event = state.find((event) => event.id === navigation.getParam('id'))
 
     return (
+        <ScrollView>
         <View style={styles.container} >
-            <View>
+            <View style={styles.eventContainer} >
                 <Image style={styles.imageStyle} source={{uri: event.img}}/> 
                 <Text>{event.name}</Text>
                 <Text>{event.describe}</Text>
-                <Text>Icons of Friends going to the event</Text>
-                <Text>Buy Ticket with Price Amount</Text>
-                <Text>Location</Text>
             </View>
-            <View>
-                <Image style={styles.imageStyle} source={{uri: 'https://picsum.photos/300/200'}}/> 
-                <Text>About the Business</Text>
-                <Text>Previous Events by the Business</Text>
+            <View style={styles.mapContainer} >
+                <Text>Map View Should be Here</Text>
             </View>
+            <View style={styles.friendsContainer} >
+                <Text>Icons of Friends Should be Here</Text>
+            </View>
+            <Button title="About Business" onPress={() => navigation.navigate('BusinessDetails')}/>
+            <Button title="Buy Ticket" />
             <Button title='Edit This Event' onPress={() => navigation.navigate('EditEvent', { id: event.id})}/>
         </View>
+        </ScrollView>
     )
 }
 
@@ -33,13 +35,29 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         borderColor: 'green',
         borderWidth: 5,
-        marginTop: 25,
-        height: 670
+        marginTop: 5,
+        height: 800,
+    },
+    eventContainer: {
+        alignItems: 'center'
     },
     imageStyle: {
         width: 300,
         height: 200, 
     },
+    friendsContainer: {
+        borderColor: 'blue',
+        borderWidth: 5,
+        paddingVertical: 10, 
+        paddingHorizontal: 50
+    },
+    mapContainer: {
+        borderColor: 'blue',
+        borderWidth: 5,
+        paddingVertical: 90, 
+        paddingHorizontal: 90,
+        margin: 20
+    }
 });
 
 export default EventDetailsScreen

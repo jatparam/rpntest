@@ -8,25 +8,25 @@ const dummy = [{
     id: "1",
     name: 'Event 100',
     img: 'https://picsum.photos/300/200',
-    describe: 'Cool'
+    describe: 'Description of Event 1'
 },
 {
     id: "2",
     name: 'Event 2',
     img: 'https://picsum.photos/200/300',
-    describe: 'Wow'
+    describe: 'Description of Event 2'
 },
 {
     id: "3",
     name: 'Event 3',
     img: 'https://picsum.photos/500/500',
-    describe: 'Yay'
+    describe: 'Description of Event 3'
 },
 {
     id: "4",
     name: 'Event 4',
     img: 'https://picsum.photos/550/550',
-    describe: 'Awesome'
+    describe: 'Description of Event 4'
 },
 ]
 

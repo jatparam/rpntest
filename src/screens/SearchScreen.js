@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
+import { FontAwesome } from '@expo/vector-icons';
 
 
 const SearchScreen = () => {
@@ -12,8 +13,14 @@ const SearchScreen = () => {
     )
 }
 
+SearchScreen.navigationOptions = {
+    title: 'Search',
+    tabBarIcon: <FontAwesome name='search' size={20} />
+};
+
 const styles = StyleSheet.create({
    
 });
+
 
 export default SearchScreen

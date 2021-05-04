@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { View, Text, StyleSheet, TextInput, Button } from 'react-native';
 import { Context as EventContext } from '../context/EventContext';
+import { FontAwesome } from '@expo/vector-icons';
 
 const CreateEventScreen = ({ navigation }) => {
     const [eventName, setEventName] = useState('');
@@ -36,6 +37,11 @@ const CreateEventScreen = ({ navigation }) => {
         </View>
     )
 }
+
+CreateEventScreen.navigationOptions = {
+    title: 'Create Events',
+    tabBarIcon: <FontAwesome name='plus' size={20} />
+};
 
 const styles = StyleSheet.create({
     textInput: {
